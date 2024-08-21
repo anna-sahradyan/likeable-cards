@@ -1,0 +1,40 @@
+.header {
+    border: 1px solid blue;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.inner {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.logoLink {
+
+}
+
+.menu {
+    cursor: pointer;
+}
+
+.list {
+    display: flex;
+    gap: 0 40px;
+
+}
+.item{
+    width: max-content;
+    font-family: var(--bs--ffly-c);
+    font-weight: 500;
+
+}
+.user{
+    display: flex;
+    gap:  0 20px;
+}
