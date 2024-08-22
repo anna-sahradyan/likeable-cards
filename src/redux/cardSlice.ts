@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 interface Card {
     id: string;
@@ -12,17 +12,21 @@ interface CardState {
     cards: Card[];
     loading: boolean;
     error: string | null;
+    showLikedOnly: boolean;
+    likedCardIds: string[];
 }
 
 const initialState: CardState = {
     cards: [],
     loading: false,
     error: null,
+    showLikedOnly: false,
+    likedCardIds: [],
 };
 
-export const fetchPhotos = createAsyncThunk(
+export const fetchPhotos = createAsyncThunk<Card[], void, { rejectValue: string }>(
     'cards/fetchPhotos',
-    async function (_, { rejectWithValue }) {
+    async function (_, {rejectWithValue}) {
         try {
             const response = await fetch(`https://api.unsplash.com/search/photos?query=london&client_id=TMfitJcpO39Gi4zOEvkuYLNSsU0rudq1zgBq2xYJWDI&per_page=24`);
             if (!response.ok) {
@@ -30,6 +34,7 @@ export const fetchPhotos = createAsyncThunk(
             }
 
             const data = await response.json();
+            console.log(data)
             return data.results.map((photo: any) => ({
                 id: photo.id,
                 title: photo.alt_description || 'No title',
@@ -43,19 +48,52 @@ export const fetchPhotos = createAsyncThunk(
     }
 );
 
-
 const cardSlice = createSlice({
     name: 'cards',
     initialState,
     reducers: {
         toggleLike(state, action: PayloadAction<string>) {
-            const card = state.cards.find((card) => card.id === action.payload);
+            const cardId = action.payload;
+            const card = state.cards.find(card => card.id === cardId);
+
             if (card) {
                 card.liked = !card.liked;
+
+                if (card.liked) {
+                    state.likedCardIds.push(cardId);
+                } else {
+                    state.likedCardIds = state.likedCardIds.filter(id => id !== cardId);
+                }
+
+                localStorage.setItem('likedCardIds', JSON.stringify(state.likedCardIds));
             }
         },
         deleteCard(state, action: PayloadAction<string>) {
-            state.cards = state.cards.filter((card) => card.id !== action.payload);
+            state.cards = state.cards.filter(card => card.id !== action.payload);
+            state.likedCardIds = state.likedCardIds.filter(id => id !== action.payload);
+            localStorage.setItem('likedCardIds', JSON.stringify(state.likedCardIds));
+        },
+        toggleShowLikedOnly(state) {
+            state.showLikedOnly = !state.showLikedOnly;
+            localStorage.setItem('showLikedOnly', JSON.stringify(state.showLikedOnly));
+        },
+        setCardsFromLocalStorage(state) {
+            const savedCards = localStorage.getItem('likedCardIds');
+            if (savedCards) {
+                state.likedCardIds = JSON.parse(savedCards);
+            }
+        },
+        setShowLikedOnlyFromLocalStorage(state) {
+            const savedFilter = localStorage.getItem('showLikedOnly');
+            if (savedFilter) {
+                state.showLikedOnly = JSON.parse(savedFilter);
+            }
+        },
+        clearLocalStorage(state) {
+            localStorage.removeItem('likedCardIds');
+            localStorage.removeItem('showLikedOnly');
+            state.likedCardIds = [];
+            state.showLikedOnly = false;
         },
     },
     extraReducers: (builder) => {
@@ -67,6 +105,7 @@ const cardSlice = createSlice({
             .addCase(fetchPhotos.fulfilled, (state, action: PayloadAction<Card[]>) => {
                 state.loading = false;
                 state.cards = action.payload;
+                localStorage.setItem('likedCardIds', JSON.stringify(state.likedCardIds)); // Обновляем локальное хранилище
             })
             .addCase(fetchPhotos.rejected, (state, action) => {
                 state.loading = false;
@@ -75,5 +114,12 @@ const cardSlice = createSlice({
     },
 });
 
-export const { toggleLike, deleteCard } = cardSlice.actions;
+export const {
+    toggleLike,
+    deleteCard,
+    toggleShowLikedOnly,
+    setCardsFromLocalStorage,
+    setShowLikedOnlyFromLocalStorage,
+    clearLocalStorage
+} = cardSlice.actions;
 export default cardSlice.reducer;

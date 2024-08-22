@@ -1,4 +1,19 @@
-
+@font-face {
+    font-family: 'FloresteWavy-BWPqd';
+    src: url(../fonts/FloresteWavy-BWPqd.woff) format('woff'),
+    url(../fonts/FloresteWavy-BWPqd.woff2) format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'FloresteOutline-Rp2AA';
+    src: url(../fonts/FloresteOutline-Rp2AA.woff) format('woff'),
+    url(../fonts/FloresteOutline-Rp2AA.woff2) format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
 html, body {
     box-sizing: border-box;
     min-height: 100%;
@@ -78,6 +93,7 @@ input::placeholder{
     --bs--bg: #F7F2EA;
     --bs--bg-color:#AECFFF;
     --bs--color:rgba(255, 255, 255, 0.2);
+    --bs--ffly-num: 'FloresteWavy-BWPqd', sans-serif;
 }
 
 body {
@@ -105,12 +121,12 @@ body {
 
 .video_title {
     position: absolute;
-    top: 30%;
+    top: 200px;
     left: 50%;
     transform: translate(-50%, -50%);
     color: var(--bs-white);
     text-align: center;
-    z-index: 1;
+    z-index: 2;
     width: 100%;
 
 }
@@ -118,7 +134,7 @@ body {
 .search_btn {
     position: relative;
     width: 40px;
-    padding: 18.5px 10px;
+    padding: 22px 10px;
     background-color: #D9FF5A;
     top: -4px;
     left: -3px;
@@ -177,100 +193,37 @@ body {
     margin: 0 auto;
     padding-left: 20px;
     padding-right: 20px;
-    border: 1px solid red;
     flex-grow: 1;
     z-index: 1;
     background-color: rgba(255, 255, 255, 0.7);
 }
 
-.footer {
 
-}
 
 @media (max-width: 1000px) {
-    .video_title {
-        top: 35%;
-    }
+
+
 }
 
 @media (max-width: 860px) {
-    .video_title {
-        max-width: 80%;
-        top: 35%;
-    }
-    .search_btn {
-        top: -5px;
-    }
 
-    .video_title h1 {
-        font-size: 80px;
-        margin: 10px auto;
-    }
-
-    .video_title input {
-        width: 300px;
-
-    }
 
 
 }
 
 @media (max-width: 768px) {
-    .video_title {
-        max-width: 70%;
-        top: 30%;
-    }
-    .search_btn {
-        top: -5px;
-    }
 
-    .video_title h1 {
-        font-size: 60px;
-        margin: 10px auto;
-    }
-
-    .video_title input {
-        width: 250px;
-
-    }
 
 }
 
 @media (max-width: 680px) {
-    .container {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-    .video_title {
-        max-width: 80%;
-        top: 30%;
-    }
 
-    .video_title h1 {
-        font-size: 60px;
-        margin: 20px auto;
-    }
-
-    .video_title input {
-        width: 200px;
-
-    }
 
 
 }
 
 @media (max-width: 480px) {
-    .video_title input {
-        width: 120px;
 
-    }
-    .video_title {
-        top: 20%;
-    }
-    .video_title h1 {
-        font-size: 40px;
-
-    }
 
 }
 

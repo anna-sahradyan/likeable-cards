@@ -3,8 +3,7 @@ import Home from "./components/home/Home";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
-import CardPage from "./components/card/CardPage";
-import CardList from "./components/container/CardList";
+import CardDetails from "./components/card/CardDetail";
 
 const App: React.FC = () => {
     return (
@@ -25,8 +24,7 @@ const App: React.FC = () => {
             <div className="container">
                 <Routes>
                     <Route path={'/'} element={<Home />} />
-                    <Route path={'/card/:id'} element={<CardPage/>} />
-                    <Route path={'/card'} element={<CardList/>} />
+                    <Route path={'/card/:id'} element={<CardDetails/>}/>
                 </Routes>
             </div>
             <Footer />

@@ -8,14 +8,14 @@ const Header: React.FC = () => {
             <header className={s.header}>
                 <div className="container">
                 <div className={s.inner}>
-                    <a href="#" className={s.logoLink}><img src="/images/ship.svg" alt="ship" width={30}/></a>
+                    <a href="/" className={s.logoLink}><img src="/images/ship.svg" alt="ship" width={30}/></a>
                     <nav className={s.menu}>
                         <ul className={s.list}>
-                            <li className={s.item}><a href="#">Home</a></li>
-                            <li className={s.item}><a href="#">About</a></li>
-                            <li className={s.item}><a href="#">Blog</a></li>
-                            <li className={s.item}><a href="#">Gallery</a></li>
-                            <li className={s.item}><a href="#">Contact</a></li>
+                            <li className={s.item}><a href="/">Home</a></li>
+                            <li className={s.item}><a href="/">About</a></li>
+                            <li className={s.item}><a href="/">Blog</a></li>
+                            <li className={s.item}><a href="/">Gallery</a></li>
+                            <li className={s.item}><a href="/">Contact</a></li>
                         </ul>
                     </nav>
                     <div className={s.user}>
