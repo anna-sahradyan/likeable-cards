@@ -17,7 +17,7 @@
     display: flex;
     justify-content: center;
     padding: 80px 0;
-    color: #D9FF5A;
+    color: var(--common-color);
     font-size: 80px ;
     font-family: var(--bs--ffly-num);
 }
@@ -25,7 +25,7 @@
     display: flex;
     justify-content: center;
     padding: 80px 0;
-    color: #D9FF5A;
+    color: var(--common-color);
     font-weight: 700;
     font-size: 24px;
 }

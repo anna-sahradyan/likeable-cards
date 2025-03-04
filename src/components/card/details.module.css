@@ -30,7 +30,7 @@
     width: 90%;
     padding: 30px 0;
     font-family: var(--bs--ffly-num);
-    color: #D9FF5A;
+    color:var(--common-color);
     font-size: 40px;
     display: flex;
     justify-content: center;
@@ -58,9 +58,9 @@
     cursor: pointer;
     width: 400px;
     border-radius: 400px;
-    color: #D9FF5A;
+    color:var(--common-color);
     background-color: transparent;
-    border: 2px solid #D9FF5A;
+    border: 2px solid var(--common-color);
     text-transform: uppercase;
     padding: 10px;
     text-align: center;

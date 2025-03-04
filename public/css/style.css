@@ -6,6 +6,7 @@
     font-style: normal;
     font-display: swap;
 }
+
 @font-face {
     font-family: 'FloresteOutline-Rp2AA';
     src: url(../fonts/FloresteOutline-Rp2AA.woff) format('woff'),
@@ -14,6 +15,7 @@
     font-style: normal;
     font-display: swap;
 }
+
 html, body {
     box-sizing: border-box;
     min-height: 100%;
@@ -76,12 +78,14 @@ input {
     outline: none;
     color: var(--bs-white);
     font-size: 18px;
-    caret-color: #D9FF5A;
+    caret-color: var(--common-color);
 }
-input::placeholder{
-    color: #D9FF5A;
+
+input::placeholder {
+    color: var(--common-color);
     opacity: 1;
 }
+
 :root {
     --bs-black: #151618;
     --bs-fs: 20px;
@@ -89,10 +93,11 @@ input::placeholder{
     --bs-l-height: 1.5;
     --bs-ffly: "Open Sans", sans-serif;
     --bs-white: #fff;
+    --common-color: #B3261E;
     --bs--ffly-c: 'Cormorant', serif;
     --bs--bg: #F7F2EA;
-    --bs--bg-color:#AECFFF;
-    --bs--color:rgba(255, 255, 255, 0.2);
+    --bs--bg-color: #AECFFF;
+    --bs--color: rgba(255, 255, 255, 0.2);
     --bs--ffly-num: 'FloresteWavy-BWPqd', sans-serif;
 }
 
@@ -135,18 +140,20 @@ body {
     position: relative;
     width: 40px;
     padding: 22px 10px;
-    background-color: #D9FF5A;
+    background-color: var(--common-color);
     top: -4px;
     left: -3px;
     border-radius: 3px;
 }
+
 .video_title input {
     width: 500px;
     padding: 10px;
-    border: 1px solid #D9FF5A;
+    border: 1px solid var(--common-color);
     border-radius: 5px;
 
 }
+
 .search_btn:after {
     content: "";
     position: absolute;
@@ -165,7 +172,6 @@ body {
     font-size: 100px;
     margin: 20px auto;
 }
-
 
 
 .video video {
@@ -199,14 +205,12 @@ body {
 }
 
 
-
 @media (max-width: 1000px) {
 
 
 }
 
 @media (max-width: 860px) {
-
 
 
 }
@@ -217,7 +221,6 @@ body {
 }
 
 @media (max-width: 680px) {
-
 
 
 }

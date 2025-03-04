@@ -9,9 +9,9 @@
     cursor: pointer;
     width: 400px;
     border-radius: 400px;
-    color: #D9FF5A;
+    color: var(--common-color);
     background-color: transparent;
-    border: 2px solid #D9FF5A;
+    border: 2px solid var(--common-color);
     text-transform: uppercase;
     padding: 10px;
     text-align: center;
@@ -46,7 +46,7 @@
 
 .titleAll {
     font-family: var(--bs--ffly-num);
-    color: #D9FF5A;
+    color: var(--common-color);
     font-size: 40px;
     display: flex;
     justify-content: center;
@@ -88,9 +88,12 @@
 }
 
 .textPart h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     width: 90%;
     font-size: 1.2rem;
-    color: #D9FF5A;
+    color:var(--common-color);
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
